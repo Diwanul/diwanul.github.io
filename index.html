@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Yifan Hu - Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+    <tbody>
+      <tr>
+        <td style="padding:0;width:100%;vertical-align:top">
+          
+          <!-- Header and Bio Section -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p style="text-align:center">
+                    <name>Yifan Hu</name>
+                  </p>
+                  <p>
+                    I am a student in <a href="http://eecs.pku.edu.cn">School of EECS</a> at <a href="http://www.pku.edu.cn">Peking University</a>, advised by Prof. <a href="https://zsdonghao.github.io">Hao Dong</a>. My research interests include [Field 1], [Field 2], and [Field 3]. I am passionate about solving problems in [Broad Area].
+                  </p>
+                  <p style="text-align:center">
+                    <a href="mailto:yfhu25@stu.pku.edu.cn">✉️ Email</a> &nbsp;/&nbsp;
+                    <a href="data/CV.pdf">📄 CV</a> &nbsp;/&nbsp;
+                    <a href="https://scholar.google.com/citations?user=_vJT64QAAAAJ">🎓 Scholar</a> &nbsp;/&nbsp;
+                    <a href="https://github.com/Diwanul">💻 Github</a>
+                  </p>
+                </td>
+                <td style="padding:2.5%;width:40%;max-width:40%">
+                  <!-- Place your profile photo in an 'images' folder and link it here -->
+                  <!-- <a href="images/profile.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/profile.jpg"></a> -->
+                  <div style="width: 100%; padding-bottom: 100%; background-color: #eee; text-align: center; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #999; margin-top: 45%; display: block;">[Photo Here]</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- News Section -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding:2.5%;width:100%;vertical-align:middle">
+                  <heading>📰 News</heading>
+                  <ul id="news-list" style="max-height: 200px; overflow-y: auto;">
+                    <li>Loading news...</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Publications Section -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding:2.5%;width:100%;vertical-align:middle">
+                  <heading>📝 Publications</heading>
+                  <div id="publications-list">
+                    <p>Loading publications...</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Education Section -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding:2.5%;width:100%;vertical-align:middle">
+                  <heading>🎓 Education</heading>
+                  <ul>
+                    <li>
+                      <strong>Ph.D. in Computer Science</strong> (or current degree), Year - Present<br>
+                      University Name
+                    </li>
+                    <li>
+                      <strong>B.S. in Computer Science</strong>, Year - Year<br>
+                      University Name
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Footer -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;padding:0;">
+            <tbody>
+              <tr>
+                <td style="padding:2.5%;width:100%;vertical-align:middle;text-align:right;font-size:12px;color:#777;">
+                  <p>
+                    Design and source code inspired by <a href="https://jonbarron.info">Jon Barron's website</a>.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Script to load publications from JSON generated by GitHub Actions -->
+  <script>
+    $(document).ready(function() {
+      // Load and Render News
+      $.getJSON("data/news.json", function(data) {
+        var $newsList = $("#news-list");
+        $newsList.empty(); // Clear loading text
+
+        $.each(data, function(index, item) {
+          var liHtml = '<li>' + item.content + '</li>';
+          $newsList.append(liHtml);
+        });
+      }).fail(function() {
+        $("#news-list").html("<li>Unable to load news data.</li>");
+      });
+
+      // Load and Render Publications
+      $.getJSON("data/publications.json", function(data) {
+        var $pubList = $("#publications-list");
+        $pubList.empty(); // Clear loading text
+
+        $.each(data, function(index, item) {
+          var formattedAuthors = item.authors;
+          // Optionally bold your name:
+          // formattedAuthors = formattedAuthors.replace("Yifan Hu", "<strong>Yifan Hu</strong>");
+
+          var pubHtml = '<p>' +
+                          '<strong>' + item.title + '</strong><br>' +
+                          formattedAuthors + '<br>' +
+                          '<em>' + item.venue + '</em><br>';
+
+          if(item.url) {
+             pubHtml += '<a href="' + item.url + '" target="_blank">[Link]</a>';
+          }
+                        
+          pubHtml += '</p>';
+          $pubList.append(pubHtml);
+        });
+      }).fail(function() {
+        $("#publications-list").html("<p>Unable to load publication data.</p>");
+      });
+    });
+  </script>
+</body>
+</html>

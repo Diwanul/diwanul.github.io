@@ -1,0 +1,45 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6em;
+  color: #222;
+  background-color: #fff;
+  margin: 0;
+  padding: 20px 0;
+}
+
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+heading {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+name {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+}
+
+ul {
+  padding-left: 20px;
+  margin-top: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
