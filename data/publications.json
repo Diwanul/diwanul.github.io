@@ -1,8 +1,9 @@
 [
   {
-    "title": "Sample Paper Title",
-    "authors": "Author 1, Author 2, Yifan Hu",
-    "venue": "Sample Conference, 2024",
-    "url": "https://scholar.google.com/"
+    "title": "RMBench: Memory-Dependent Robotic Manipulation Benchmark with Insights into Policy Design",
+    "authors": "Tianxing Chen, Yuran Wang, Mingleyang Li, Yan Qin, Hao Shi, Zixuan Li, Yifan Hu, Yingsheng Zhang, Kaixuan Wang, Yue Chen, Hongcheng Wang, Renjing Xu, Ruihai Wu, Yao Mu, Yaodong Yang, Hao Dong, Ping Luo",
+    "venue": "arXiv preprint arXiv:2603.01229, 2026",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2603.01229"
   }
 ]
