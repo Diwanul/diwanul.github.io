@@ -7,14 +7,10 @@
   "github_link": "https://github.com/Diwanul",
   "education": [
     {
-      "degree": "Ph.D. in Computer Science",
-      "time": "202X - Present",
-      "university": "Peking University"
-    },
-    {
       "degree": "B.S. in Computer Science",
-      "time": "201X - 202X",
-      "university": "Your Undergrad University"
+      "time": "202X - Present",
+      "university": "Peking University",
+      "image": "images/pku_logo.png"
     }
   ]
 }

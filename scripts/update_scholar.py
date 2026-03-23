@@ -22,14 +22,21 @@ def fetch_publications(scholar_id):
 
             # Format venue & year
             venue_year = f"{venue}, {year}" if venue and year else venue or year
-
+            
+            # Use publication title nicely slugified as an expected image path reference
+            slug_title = "".join(x for x in title if x.isalnum() or x.isspace()).replace(" ", "_").lower()
+            
+            # Check if there is an existing json to merge manually added keys (like pdf, code, image links)
             publications.append({
                 "title": title,
                 "authors": authors.replace(' and ', ', '),
                 "venue": venue_year,
                 "venue_clean": venue,
                 "year": year, # store year for sorting
-                "url": url
+                "url": url,
+                "image": f"images/{slug_title}.png",  # Default inferred image path
+                "pdf": "",
+                "code": ""
             })
             
             # Limit to recent/top 15 to avoid long execution times
@@ -50,10 +57,27 @@ if __name__ == "__main__":
     
     if pubs:
         os.makedirs('data', exist_ok=True)
+        # Attempt to retain custom user manual fields from the old json file
+        existing_pubs_map = {}
+        if os.path.exists('data/publications.json'):
+            with open('data/publications.json', 'r') as f:
+                old_data = json.load(f)
+                for item in old_data:
+                    existing_pubs_map[item['title']] = item
+
         # Save publications
         with open('data/publications.json', 'w') as f:
-            # We don't save venue_clean to output purely for cleanliness, just remove it first
-            out_pubs = [{k: v for k, v in p.items() if k != 'venue_clean'} for p in pubs]
+            # Merge logic for old annotations (manual image path, links) with new data
+            out_pubs = []
+            for p in pubs:
+                merged = {k: v for k, v in p.items() if k != 'venue_clean'}
+                if merged['title'] in existing_pubs_map:
+                    old_p = existing_pubs_map[merged['title']]
+                    merged['image'] = old_p.get('image', merged['image'])
+                    merged['pdf'] = old_p.get('pdf', merged['pdf'])
+                    merged['code'] = old_p.get('code', merged['code'])
+                out_pubs.append(merged)
+                
             json.dump(out_pubs, f, indent=2)
             
         # Generate News from the most recent 5 publications based on venue context

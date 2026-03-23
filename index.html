@@ -118,7 +118,11 @@
         var $eduList = $("#education-list");
         $eduList.empty();
         $.each(data.education, function(index, item) {
-          var liHtml = '<li><strong>' + item.degree + '</strong>, ' + item.time + '<br>' + item.university + '</li>';
+          var imgHtml = item.image ? '<img src="' + item.image + '" style="height: 40px; vertical-align: middle; margin-right: 15px;">' : '';
+          var liHtml = '<li style="display: flex; align-items: center; margin-bottom: 10px;">' + 
+                         imgHtml +
+                         '<div><strong>' + item.degree + '</strong>, ' + item.time + '<br>' + item.university + '</div>' + 
+                       '</li>';
           $eduList.append(liHtml);
         });
       });
@@ -143,19 +147,31 @@
 
         $.each(data, function(index, item) {
           var formattedAuthors = item.authors;
-          // Optionally bold your name:
-          // formattedAuthors = formattedAuthors.replace("Yifan Hu", "<strong>Yifan Hu</strong>");
+          // Highlight user's name dynamically:
+          formattedAuthors = formattedAuthors.replace(/Yifan Hu/g, "<strong>Yifan Hu</strong>")
+                                             .replace(/Y Hu/g, "<strong>Y Hu</strong>");
 
-          var pubHtml = '<p>' +
-                          '<strong>' + item.title + '</strong><br>' +
-                          formattedAuthors + '<br>' +
-                          '<em>' + item.venue + '</em><br>';
+          var imgHtml = item.image ? '<td style="padding: 10px; width: 25%; max-width: 25%; vertical-align: middle;"><img src="' + item.image + '" style="width: 100%; border-radius: 4px;"></td>' : '';
+          var infoStyle = item.image ? 'padding: 10px; width: 75%; vertical-align: top;' : 'padding: 10px; width: 100%; vertical-align: top;';
+
+          var pubHtml = '<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 0 10px 0;"><tbody><tr>' +
+                          imgHtml +
+                          '<td style="' + infoStyle + '">' +
+                            '<strong>' + item.title + '</strong><br>' +
+                            formattedAuthors + '<br>' +
+                            '<em>' + item.venue + '</em><br>';
 
           if(item.url) {
-             pubHtml += '<a href="' + item.url + '" target="_blank">[Link]</a>';
+             pubHtml += '<a href="' + item.url + '" target="_blank" style="font-size: 14px;">[Link]</a> ';
+          }
+          if(item.pdf) {
+             pubHtml += '<a href="' + item.pdf + '" target="_blank" style="font-size: 14px;">[PDF]</a> ';
+          }
+          if(item.code) {
+             pubHtml += '<a href="' + item.code + '" target="_blank" style="font-size: 14px;">[Code]</a> ';
           }
                         
-          pubHtml += '</p>';
+          pubHtml += '</td></tr></tbody></table>';
           $pubList.append(pubHtml);
         });
       }).fail(function() {

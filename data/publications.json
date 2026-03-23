@@ -4,6 +4,9 @@
     "authors": "Tianxing Chen, Yuran Wang, Mingleyang Li, Yan Qin, Hao Shi, Zixuan Li, Yifan Hu, Yingsheng Zhang, Kaixuan Wang, Yue Chen, Hongcheng Wang, Renjing Xu, Ruihai Wu, Yao Mu, Yaodong Yang, Hao Dong, Ping Luo",
     "venue": "arXiv preprint arXiv:2603.01229, 2026",
     "year": 2026,
-    "url": "https://arxiv.org/abs/2603.01229"
+    "url": "https://arxiv.org/abs/2603.01229",
+    "image": "images/rmbench_memorydependent_robotic_manipulation_benchmark_with_insights_into_policy_design.png",
+    "pdf": "",
+    "code": ""
   }
 ]
