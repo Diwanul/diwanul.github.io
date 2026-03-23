@@ -1,16 +1,17 @@
 {
   "name": "Yifan Hu",
-  "bio": "I am a student in <a href='http://eecs.pku.edu.cn'>School of EECS</a> at <a href='http://www.pku.edu.cn'>Peking University</a>, advised by Prof. <a href='https://zsdonghao.github.io'>Hao Dong</a>.<br><br>My research interests cover <strong>AI algorithm applications in robotics</strong>.",
+  "bio": "I am a student in <a href='https://eecs.pku.edu.cn'>School of EECS</a> at <a href='https://www.pku.edu.cn'>Peking University</a>, advised by Prof. <a href='https://zsdonghao.github.io'>Hao Dong</a>.<br><br>My research interests cover <strong>embodied intelligence</strong>.",
   "email": "yfhu25@stu.pku.edu.cn",
   "cv_link": "data/CV.pdf",
   "scholar_link": "https://scholar.google.com/citations?user=_vJT64QAAAAJ",
   "github_link": "https://github.com/Diwanul",
   "education": [
     {
-      "degree": "B.S. in Computer Science",
-      "time": "2021 - 2025",
-      "university": "<a href='http://www.pku.edu.cn'>Peking University</a>",
-      "image": "images/pku_logo.png"
+      "degree": "Undergraduate Student",
+      "time": "2025.09 - Present",
+      "university": "Peking University",
+      "image": "images/pku_logo.png",
+      "link": "https://pku.edu.cn"
     }
   ]
 }

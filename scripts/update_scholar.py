@@ -34,9 +34,10 @@ def fetch_publications(scholar_id):
                 "venue_clean": venue,
                 "year": year, # store year for sorting
                 "url": url,
-                "image": f"images/{slug_title}.png",  # Default inferred image path
-                "pdf": "",
-                "code": ""
+                "project": "",
+                "code": "",
+                "image": f"images/{slug_title}.png",
+                "pdf": ""
             })
             
             # Limit to recent/top 15 to avoid long execution times
@@ -74,8 +75,10 @@ if __name__ == "__main__":
                 if merged['title'] in existing_pubs_map:
                     old_p = existing_pubs_map[merged['title']]
                     merged['image'] = old_p.get('image', merged['image'])
-                    merged['pdf'] = old_p.get('pdf', merged['pdf'])
-                    merged['code'] = old_p.get('code', merged['code'])
+                    merged['url'] = old_p.get('url', merged['url'])
+                    merged['project'] = old_p.get('project', merged.get('project', ''))
+                    merged['code'] = old_p.get('code', merged.get('code', ''))
+                    merged['pdf'] = old_p.get('pdf', merged.get('pdf', ''))
                 out_pubs.append(merged)
                 
             json.dump(out_pubs, f, indent=2)

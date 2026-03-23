@@ -117,9 +117,10 @@
         $eduList.empty();
         $.each(data.education, function(index, item) {
           var imgHtml = item.image ? '<img src="' + item.image + '" style="height: 40px; vertical-align: middle; margin-right: 15px;">' : '';
+          var uniText = item.link ? '<a href="' + item.link + '">' + item.university + '</a>' : item.university;
           var liHtml = '<li style="display: flex; align-items: center; margin-bottom: 10px;">' + 
                          imgHtml +
-                         '<div><strong>' + item.degree + '</strong>, ' + item.time + '<br>' + item.university + '</div>' + 
+                         '<div><strong>' + item.degree + '</strong>, ' + item.time + '<br>' + uniText + '</div>' + 
                        '</li>';
           $eduList.append(liHtml);
         });
@@ -160,13 +161,16 @@
                             '<em>' + item.venue + '</em><br>';
 
           if(item.url) {
-             pubHtml += '<a href="' + item.url + '" target="_blank" style="font-size: 14px;">[Link]</a> ';
+             pubHtml += '<a href="' + item.url + '" target="_blank" style="font-size: 14px;">[Paper]</a> ';
           }
-          if(item.pdf) {
-             pubHtml += '<a href="' + item.pdf + '" target="_blank" style="font-size: 14px;">[PDF]</a> ';
+          if(item.project) {
+             pubHtml += '<a href="' + item.project + '" target="_blank" style="font-size: 14px;">[Project]</a> ';
           }
           if(item.code) {
              pubHtml += '<a href="' + item.code + '" target="_blank" style="font-size: 14px;">[Code]</a> ';
+          }
+          if(item.pdf) {
+             pubHtml += '<a href="' + item.pdf + '" target="_blank" style="font-size: 14px;">[PDF]</a> ';
           }
                         
           pubHtml += '</td></tr></tbody></table>';
