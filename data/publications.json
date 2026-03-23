@@ -7,6 +7,7 @@
     "url": "https://arxiv.org/abs/2603.01229",
     "image": "images/rmbench_memorydependent_robotic_manipulation_benchmark_with_insights_into_policy_design.png",
     "pdf": "",
-    "code": ""
+    "code": "https://github.com/RoboTwin-Platform/RMBench",
+    "project": "https://rmbench.github.io"
   }
 ]
